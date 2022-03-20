@@ -20,7 +20,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:types && npm run test:jest",
+    "test:jest": "jest",
+    "test:types": "tsc --noEmit",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint src --ext .js,.ts,.tsx",
@@ -31,6 +33,9 @@
       "npm run format",
       "npm run lint"
     ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "eslintConfig": {
     "extends": [
