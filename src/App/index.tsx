@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from '../shared/media';
+import { GITHUB_API_URL, SORT_BY } from '../shared/constants';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
+import SearchFilters from '../SearchFilters';
 
 const { tablet, desktop } = media;
-
-const GITHUB_URL = 'https://api.github.com/search/repositories';
 
 const PageContainer = styled.div`
   height: 100vh;
@@ -54,6 +54,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
+  const [sortBy, setSortBy] = useState(SORT_BY.default);
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchSearchResults = async (
@@ -63,7 +64,7 @@ const App = () => {
   ) => {
     setIsLoading(true);
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    const response = await fetch(`${GITHUB_URL}?q=${encodedSearchTerm}`);
+    const response = await fetch(`${GITHUB_API_URL}?q=${encodedSearchTerm}`);
     if (!response.ok) {
       console.error(
         `Error fetching search results. Error code: ${response.status} ${response.statusText}`
@@ -84,6 +85,10 @@ const App = () => {
     setIsLoading(false);
   };
 
+  const handleSortByChange = (sortBy: string) => {
+    setSortBy(sortBy);
+  };
+
   return (
     <PageContainer>
       <ContentContainer>
@@ -97,7 +102,15 @@ const App = () => {
         {hasNoResults && (
           <p>The search returned no results. Please try again.</p>
         )}
-        {searchResults.length > 0 && <SearchResults results={searchResults} />}
+        {searchResults.length > 0 && (
+          <>
+            <SearchFilters
+              sortBy={sortBy}
+              handleSortByChange={handleSortByChange}
+            />
+            <SearchResults results={searchResults} />
+          </>
+        )}
       </ContentContainer>
     </PageContainer>
   );
