@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../shared/media';
+import SearchBar from '../SearchBar';
 
 const { tablet, desktop } = media;
 
@@ -24,6 +25,7 @@ const ContentContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 const Title = styled.h1`
@@ -49,7 +51,14 @@ const App = () => {
   return (
     <PageContainer>
       <ContentContainer>
-        <Title>GitHub Repo Search</Title>
+        <Title>GitHub Repo Finder</Title>
+        <SearchBar
+          handleSearch={() => {
+            console.log('Ran!');
+            return;
+          }}
+          isDisabled={false}
+        />
       </ContentContainer>
     </PageContainer>
   );

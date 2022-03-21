@@ -2,16 +2,34 @@
 
 exports[`<App /> renders correctly 1`] = `
 <div
-  className="sc-bdvvtL cQzZvI"
+  className="sc-hKwDye dnRGEm"
 >
   <div
-    className="sc-gsDKAQ hgLCQd"
+    className="sc-eCImPb cCCSIQ"
   >
     <h1
-      className="sc-dkPtRN jxDAvK"
+      className="sc-jRQBWg eywaeu"
     >
-      GitHub Repo Search
+      GitHub Repo Finder
     </h1>
+    <form
+      className="sc-bdvvtL ilklID"
+      onSubmit={[Function]}
+    >
+      <input
+        className="sc-gsDKAQ ifTxWv"
+        onChange={[Function]}
+        placeholder="Search for GitHub repositories"
+        type="search"
+        value=""
+      />
+      <input
+        className="sc-dkPtRN eshZZB"
+        disabled={false}
+        type="submit"
+        value="Search"
+      />
+    </form>
   </div>
 </div>
 `;

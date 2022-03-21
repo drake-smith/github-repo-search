@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
     line-height: 1.5;
+    color: #202020;
   }
   /*
     6. Improve media defaults
