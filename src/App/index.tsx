@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from '../shared/media';
 import SearchBar from '../SearchBar';
-import { json } from 'stream/consumers';
+import SearchResults from '../SearchResults';
 
 const { tablet, desktop } = media;
 
@@ -97,6 +97,7 @@ const App = () => {
         {hasNoResults && (
           <p>The search returned no results. Please try again.</p>
         )}
+        {searchResults.length > 0 && <SearchResults results={searchResults} />}
       </ContentContainer>
     </PageContainer>
   );

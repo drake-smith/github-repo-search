@@ -9,7 +9,8 @@ interface SearchResultsProps {
 }
 
 const SearchResultsContainer = styled.div`
-  width: 100%;
+  margin-top: 1.5rem;
+  width: 800px;
 `;
 
 const SearchResults = ({ results }: SearchResultsProps) => {
@@ -18,8 +19,11 @@ const SearchResults = ({ results }: SearchResultsProps) => {
       {results.map((result, i) => {
         return (
           <div key={i}>
-            <h2>suh</h2>
-            <p>dude</p>
+            <h2>{result.name}</h2>
+            <p>Owner: {result.owner.login}</p>
+            <p>{result.description}</p>
+            <p>Number of stars: {result.stargazers_count}</p>
+            <p>Language: {result.language}</p>
           </div>
         );
       })}
