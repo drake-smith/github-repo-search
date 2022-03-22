@@ -2,18 +2,18 @@
 
 exports[`<SearchBar /> It renders correctly 1`] = `
 <form
-  className="sc-bdvvtL ilklID"
+  className="sc-bdvvtL jcpPon"
   onSubmit={[Function]}
 >
   <input
-    className="sc-gsDKAQ ifTxWv"
+    className="sc-gsDKAQ kTAeqL"
     onChange={[Function]}
     placeholder="Search for GitHub repositories"
     type="search"
-    value=""
+    value="Test"
   />
   <input
-    className="sc-dkPtRN eshZZB"
+    className="sc-dkPtRN cNVLkp"
     disabled={false}
     type="submit"
     value="Search"

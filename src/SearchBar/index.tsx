@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { media } from '../shared/media';
 
 const { tablet } = media;
 
 interface SearchBarProps {
-  handleSearch: (searchTerm: string) => void;
+  searchTerm: string;
+  handleSearchTermChange: (searchTerm: string) => void;
+  handleSearchSubmit: () => void;
   isDisabled: boolean;
 }
 
@@ -60,20 +62,23 @@ const SearchButton = styled.input<{ disabled: boolean }>`
   `}
 `;
 
-const SearchBar = ({ handleSearch, isDisabled }: SearchBarProps) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
+const SearchBar = ({
+  searchTerm,
+  handleSearchTermChange,
+  handleSearchSubmit,
+  isDisabled,
+}: SearchBarProps) => {
   return (
     <SearchBarForm
       onSubmit={(e) => {
         e.preventDefault();
-        handleSearch(searchTerm);
+        handleSearchSubmit();
       }}
     >
       <SearchInput
         type="search"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => handleSearchTermChange(e.target.value)}
         placeholder="Search for GitHub repositories"
       />
       <SearchButton type="submit" value="Search" disabled={isDisabled} />

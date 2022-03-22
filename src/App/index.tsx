@@ -55,6 +55,7 @@ const App = () => {
   const [hasError, setHasError] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
   const [sortBy, setSortBy] = useState(SORT_BY.default);
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchSearchResults = async (
@@ -89,11 +90,24 @@ const App = () => {
     setSortBy(sortBy);
   };
 
+  const handleSearchTermChange = (searchTerm: string) => {
+    setSearchTerm(searchTerm);
+  };
+
+  const handleSearchSubmit = () => {
+    fetchSearchResults(searchTerm, sortBy);
+  };
+
   return (
     <PageContainer>
       <ContentContainer>
         <Title>GitHub Repo Finder</Title>
-        <SearchBar handleSearch={fetchSearchResults} isDisabled={isLoading} />
+        <SearchBar
+          searchTerm={searchTerm}
+          handleSearchSubmit={handleSearchSubmit}
+          handleSearchTermChange={handleSearchTermChange}
+          isDisabled={isLoading}
+        />
         {hasError && (
           <p>
             There was an error fetching the search results. Please try again.

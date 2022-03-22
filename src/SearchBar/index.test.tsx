@@ -8,13 +8,27 @@ describe('<SearchBar />', () => {
 
   test('It renders correctly', () => {
     const tree = renderer
-      .create(<SearchBar handleSearch={handleSearch} isDisabled={false} />)
+      .create(
+        <SearchBar
+          searchTerm={'Test'}
+          handleSearchSubmit={handleSearch}
+          handleSearchTermChange={handleSearch}
+          isDisabled={false}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('handleSearch is called correctly', () => {
-    render(<SearchBar handleSearch={handleSearch} isDisabled={false} />);
+    render(
+      <SearchBar
+        searchTerm={'Test'}
+        handleSearchSubmit={handleSearch}
+        handleSearchTermChange={handleSearch}
+        isDisabled={false}
+      />
+    );
     const buttonElem = screen.getByText('Search');
     fireEvent.click(buttonElem);
     expect(handleSearch).toHaveBeenCalledTimes(1);

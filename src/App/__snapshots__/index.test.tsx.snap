@@ -2,29 +2,29 @@
 
 exports[`<App /> renders correctly 1`] = `
 <div
-  className="sc-hKwDye dnRGEm"
+  className="sc-furwcr bXgPNt"
 >
   <div
-    className="sc-eCImPb cCCSIQ"
+    className="sc-pVTFL ebYjgs"
   >
     <h1
-      className="sc-jRQBWg eywaeu"
+      className="sc-jrQzAO jzcgGI"
     >
       GitHub Repo Finder
     </h1>
     <form
-      className="sc-bdvvtL ilklID"
+      className="sc-bdvvtL jcpPon"
       onSubmit={[Function]}
     >
       <input
-        className="sc-gsDKAQ ifTxWv"
+        className="sc-gsDKAQ kTAeqL"
         onChange={[Function]}
         placeholder="Search for GitHub repositories"
         type="search"
         value=""
       />
       <input
-        className="sc-dkPtRN eshZZB"
+        className="sc-dkPtRN cNVLkp"
         disabled={false}
         type="submit"
         value="Search"
