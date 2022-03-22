@@ -65,7 +65,10 @@ const App = () => {
   ) => {
     setIsLoading(true);
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    const response = await fetch(`${GITHUB_API_URL}?q=${encodedSearchTerm}`);
+    const sortByParam = sortBy !== SORT_BY.default ? `&sort=${sortBy}` : '';
+    const response = await fetch(
+      `${GITHUB_API_URL}?q=${encodedSearchTerm}${sortByParam}`
+    );
     if (!response.ok) {
       console.error(
         `Error fetching search results. Error code: ${response.status} ${response.statusText}`
@@ -88,6 +91,7 @@ const App = () => {
 
   const handleSortByChange = (sortBy: string) => {
     setSortBy(sortBy);
+    fetchSearchResults(searchTerm, sortBy);
   };
 
   const handleSearchTermChange = (searchTerm: string) => {
