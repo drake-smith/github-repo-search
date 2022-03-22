@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SORT_BY } from '../shared/constants';
+import { LANGUAGES, SORT_BY } from '../shared/constants';
 
 interface SearchFiltersProps {
   sortBy: string;
   handleSortByChange: (sortBy: string) => void;
+  language: string;
+  handleLanguageChange: (language: string) => void;
 }
 
 const SearchFiltersContainer = styled.div`
@@ -19,7 +21,17 @@ const RadioLabel = styled.label`
   margin-left: 0.5rem;
 `;
 
-const SearchFilters = ({ sortBy, handleSortByChange }: SearchFiltersProps) => {
+const SearchFilters = ({
+  sortBy,
+  handleSortByChange,
+  language,
+  handleLanguageChange,
+}: SearchFiltersProps) => {
+  const languageSelects: Array<JSX.Element> = [];
+  languageSelects.push(<option value={''}>None</option>);
+  for (const key in LANGUAGES) {
+    languageSelects.push(<option value={key}>{LANGUAGES[key]}</option>);
+  }
   return (
     <SearchFiltersContainer>
       <p>Sort by:</p>
@@ -45,6 +57,15 @@ const SearchFilters = ({ sortBy, handleSortByChange }: SearchFiltersProps) => {
         />
         <RadioLabel htmlFor="stars">Total Stars</RadioLabel>
       </RadioButtonContainer>
+      <label htmlFor="pet-select">Filter by Language</label>
+
+      <select
+        value={language}
+        id="pet-select"
+        onChange={(e) => handleLanguageChange(e.target.value)}
+      >
+        {languageSelects}
+      </select>
     </SearchFiltersContainer>
   );
 };

@@ -55,19 +55,24 @@ const App = () => {
   const [hasError, setHasError] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
   const [sortBy, setSortBy] = useState(SORT_BY.default);
+  const [language, setLanguage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   const fetchSearchResults = async (
     searchTerm: string,
-    sortBy?: string,
-    language?: string
+    sortBy: string,
+    language: string
   ) => {
     setIsLoading(true);
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    const sortByParam = sortBy !== SORT_BY.default ? `&sort=${sortBy}` : '';
+    const sortByParam =
+      sortBy !== SORT_BY.default ? `&sort=${encodeURIComponent(sortBy)}` : '';
+    const encodedLanguageParam =
+      language !== '' ? `+language:${encodeURIComponent(language)}` : '';
+
     const response = await fetch(
-      `${GITHUB_API_URL}?q=${encodedSearchTerm}${sortByParam}`
+      `${GITHUB_API_URL}?q=${encodedSearchTerm}${encodedLanguageParam}${sortByParam}`
     );
     if (!response.ok) {
       console.error(
@@ -91,7 +96,7 @@ const App = () => {
 
   const handleSortByChange = (sortBy: string) => {
     setSortBy(sortBy);
-    fetchSearchResults(searchTerm, sortBy);
+    fetchSearchResults(searchTerm, sortBy, language);
   };
 
   const handleSearchTermChange = (searchTerm: string) => {
@@ -99,7 +104,12 @@ const App = () => {
   };
 
   const handleSearchSubmit = () => {
-    fetchSearchResults(searchTerm, sortBy);
+    fetchSearchResults(searchTerm, sortBy, language);
+  };
+
+  const handleLanguageChange = (language: string) => {
+    setLanguage(language);
+    fetchSearchResults(searchTerm, sortBy, language);
   };
 
   return (
@@ -123,6 +133,8 @@ const App = () => {
         {searchResults.length > 0 && (
           <>
             <SearchFilters
+              language={language}
+              handleLanguageChange={handleLanguageChange}
               sortBy={sortBy}
               handleSortByChange={handleSortByChange}
             />
