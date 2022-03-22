@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar /> It renders correctly 1`] = `
+<form
+  className="sc-bdvvtL jcpPon"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-gsDKAQ kTAeqL"
+    onChange={[Function]}
+    placeholder="Search for GitHub repositories"
+    type="search"
+    value="Test"
+  />
+  <input
+    className="sc-dkPtRN cNVLkp"
+    disabled={false}
+    type="submit"
+    value="Search"
+  />
+</form>
+`;
