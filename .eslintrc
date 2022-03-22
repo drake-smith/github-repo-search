@@ -12,6 +12,7 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": [1, { "singleQuote": true }]
+    "prettier/prettier": [1, { "singleQuote": true }],
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }
