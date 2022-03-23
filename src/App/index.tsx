@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Routes, Route, Link } from 'react-router-dom';
 import { media } from '../shared/media';
 import { GITHUB_API_URL, SORT_BY } from '../shared/constants';
-import SearchBar from '../SearchBar';
-import SearchResults from '../SearchResults';
-import SearchFilters from '../SearchFilters';
+import HomePage from '../HomePage';
+import DetailPage from '../DetailPage';
 
 const { tablet, desktop } = media;
 
@@ -58,6 +58,7 @@ const App = () => {
   const [language, setLanguage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedSearchResult, setSelectedSearchResult] = useState(null);
 
   const fetchSearchResults = async (
     searchTerm: string,
@@ -112,35 +113,41 @@ const App = () => {
     fetchSearchResults(searchTerm, sortBy, language);
   };
 
+  const handleSelectSearchResult = (index: number) => {
+    setSelectedSearchResult(searchResults[index]);
+  };
+
   return (
     <PageContainer>
       <ContentContainer>
-        <Title>GitHub Repo Finder</Title>
-        <SearchBar
-          searchTerm={searchTerm}
-          handleSearchSubmit={handleSearchSubmit}
-          handleSearchTermChange={handleSearchTermChange}
-          isDisabled={isLoading}
-        />
-        {hasError && (
-          <p>
-            There was an error fetching the search results. Please try again.
-          </p>
-        )}
-        {hasNoResults && (
-          <p>The search returned no results. Please try again.</p>
-        )}
-        {searchResults.length > 0 && (
-          <>
-            <SearchFilters
-              language={language}
-              handleLanguageChange={handleLanguageChange}
-              sortBy={sortBy}
-              handleSortByChange={handleSortByChange}
-            />
-            <SearchResults results={searchResults} />
-          </>
-        )}
+        <Link to="/">
+          <Title>GitHub Repo Finder</Title>
+        </Link>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                searchTerm={searchTerm}
+                handleSearchTermChange={handleSearchTermChange}
+                handleSearchSubmit={handleSearchSubmit}
+                sortBy={sortBy}
+                handleSortByChange={handleSortByChange}
+                language={language}
+                handleLanguageChange={handleLanguageChange}
+                isLoading={isLoading}
+                hasError={hasError}
+                searchResults={searchResults}
+                hasNoResults={hasNoResults}
+                handleSelectSearchResult={handleSelectSearchResult}
+              />
+            }
+          />
+          <Route
+            path=":repoId"
+            element={<DetailPage selectedSearchResult={selectedSearchResult} />}
+          />
+        </Routes>
       </ContentContainer>
     </PageContainer>
   );

@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
  * which contains more data than we need.
  */
 interface SearchResultProps {
+  index: number;
+  handleSelectSearchResult: (index: number) => void;
   id: number;
   name: string;
   login: string;
@@ -15,6 +17,8 @@ interface SearchResultProps {
 }
 
 const SearchResult = ({
+  index,
+  handleSelectSearchResult,
   id,
   name,
   login,
@@ -24,7 +28,7 @@ const SearchResult = ({
 }: SearchResultProps) => {
   return (
     <li key={id}>
-      <Link to={`${id}`}>
+      <Link to={`${id}`} onClick={() => handleSelectSearchResult(index)}>
         <h2>{name}</h2>
       </Link>
       <p>Owner: {login}</p>

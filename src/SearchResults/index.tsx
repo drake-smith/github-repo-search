@@ -8,6 +8,7 @@ import SearchResult from '../SearchResult';
 interface SearchResultsProps {
   // @ts-ignore
   results: Array<any>;
+  handleSelectSearchResult: (index: number) => void;
 }
 
 const SearchResultsContainer = styled.ul`
@@ -15,21 +16,16 @@ const SearchResultsContainer = styled.ul`
   width: 800px;
 `;
 
-// return (
-//   <div key={i}>
-//     <h2>{result.name}</h2>
-//     <p>Owner: {result.owner.login}</p>
-//     <p>{result.description}</p>
-//     <p>Number of stars: {result.stargazers_count}</p>
-//     <p>Language: {result.language}</p>
-//   </div>
-// );
-
-const SearchResults = ({ results }: SearchResultsProps) => {
+const SearchResults = ({
+  results,
+  handleSelectSearchResult,
+}: SearchResultsProps) => {
   return (
     <SearchResultsContainer>
-      {results.map((result) => (
+      {results.map((result, i) => (
         <SearchResult
+          index={i}
+          handleSelectSearchResult={handleSelectSearchResult}
           id={result.id}
           name={result.name}
           login={result.owner.login}
