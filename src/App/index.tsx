@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Routes, Route, Link } from 'react-router-dom';
 import { media } from '../shared/media';
 import { GITHUB_API_URL, SORT_BY } from '../shared/constants';
-import SearchBar from '../SearchBar';
-import SearchResults from '../SearchResults';
-import SearchFilters from '../SearchFilters';
+import HomePage from '../HomePage';
+import DetailPage from '../DetailPage';
 
 const { tablet, desktop } = media;
 
@@ -22,13 +22,8 @@ const PageContainer = styled.div`
   `};
 `;
 
-const ContentContainer = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+const TitleContainer = styled.div`
+  text-align: center;
 `;
 
 const Title = styled.h1`
@@ -58,6 +53,7 @@ const App = () => {
   const [language, setLanguage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedSearchResult, setSelectedSearchResult] = useState(null);
 
   const fetchSearchResults = async (
     searchTerm: string,
@@ -112,36 +108,42 @@ const App = () => {
     fetchSearchResults(searchTerm, sortBy, language);
   };
 
+  const handleSelectSearchResult = (index: number) => {
+    setSelectedSearchResult(searchResults[index]);
+  };
+
   return (
     <PageContainer>
-      <ContentContainer>
-        <Title>GitHub Repo Finder</Title>
-        <SearchBar
-          searchTerm={searchTerm}
-          handleSearchSubmit={handleSearchSubmit}
-          handleSearchTermChange={handleSearchTermChange}
-          isDisabled={isLoading}
-        />
-        {hasError && (
-          <p>
-            There was an error fetching the search results. Please try again.
-          </p>
-        )}
-        {hasNoResults && (
-          <p>The search returned no results. Please try again.</p>
-        )}
-        {searchResults.length > 0 && (
-          <>
-            <SearchFilters
-              language={language}
-              handleLanguageChange={handleLanguageChange}
+      <TitleContainer>
+        <Link to="/">
+          <Title>GitHub Repo Finder</Title>
+        </Link>
+      </TitleContainer>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              searchTerm={searchTerm}
+              handleSearchTermChange={handleSearchTermChange}
+              handleSearchSubmit={handleSearchSubmit}
               sortBy={sortBy}
               handleSortByChange={handleSortByChange}
+              language={language}
+              handleLanguageChange={handleLanguageChange}
+              isLoading={isLoading}
+              hasError={hasError}
+              searchResults={searchResults}
+              hasNoResults={hasNoResults}
+              handleSelectSearchResult={handleSelectSearchResult}
             />
-            <SearchResults results={searchResults} />
-          </>
-        )}
-      </ContentContainer>
+          }
+        />
+        <Route
+          path=":repoId"
+          element={<DetailPage selectedSearchResult={selectedSearchResult} />}
+        />
+      </Routes>
     </PageContainer>
   );
 };
