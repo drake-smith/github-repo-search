@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     color: #202020;
   }

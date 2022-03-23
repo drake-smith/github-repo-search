@@ -5,6 +5,8 @@ import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 import SearchFilters from '../SearchFilters';
 
+const { tablet } = media;
+
 interface HomePageProps {
   searchTerm: string;
   handleSearchTermChange: (searchTerm: string) => void;
@@ -24,9 +26,18 @@ const ContentContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
+
+  ${tablet`
+    align-items: center;
+    justify-content: center;
+  `}
+`;
+
+const Text = styled.p`
+  margin-top: 1rem;
 `;
 
 const HomePage = ({
@@ -49,12 +60,16 @@ const HomePage = ({
         searchTerm={searchTerm}
         handleSearchSubmit={handleSearchSubmit}
         handleSearchTermChange={handleSearchTermChange}
-        isDisabled={isLoading}
+        isDisabled={isLoading || searchTerm === ''}
       />
       {hasError && (
-        <p>There was an error fetching the search results. Please try again.</p>
+        <Text>
+          There was an error fetching the search results. Please try again.
+        </Text>
       )}
-      {hasNoResults && <p>The search returned no results. Please try again.</p>}
+      {hasNoResults && (
+        <Text>The search returned no results. Please try again.</Text>
+      )}
       {searchResults.length > 0 && (
         <SearchFilters
           language={language}
@@ -64,7 +79,7 @@ const HomePage = ({
         />
       )}
       {isLoading ? (
-        <p>Fetching results...</p>
+        <Text>Fetching results...</Text>
       ) : (
         <SearchResults
           results={searchResults}

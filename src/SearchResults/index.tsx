@@ -12,8 +12,12 @@ interface SearchResultsProps {
 }
 
 const SearchResultsContainer = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
   margin-top: 1.5rem;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
 `;
 
 const SearchResults = ({
@@ -24,6 +28,7 @@ const SearchResults = ({
     <SearchResultsContainer>
       {results.map((result, i) => (
         <SearchResult
+          key={result.id}
           index={i}
           handleSelectSearchResult={handleSelectSearchResult}
           id={result.id}
