@@ -22,13 +22,8 @@ const PageContainer = styled.div`
   `};
 `;
 
-const ContentContainer = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+const TitleContainer = styled.div`
+  text-align: center;
 `;
 
 const Title = styled.h1`
@@ -119,36 +114,36 @@ const App = () => {
 
   return (
     <PageContainer>
-      <ContentContainer>
+      <TitleContainer>
         <Link to="/">
           <Title>GitHub Repo Finder</Title>
         </Link>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                searchTerm={searchTerm}
-                handleSearchTermChange={handleSearchTermChange}
-                handleSearchSubmit={handleSearchSubmit}
-                sortBy={sortBy}
-                handleSortByChange={handleSortByChange}
-                language={language}
-                handleLanguageChange={handleLanguageChange}
-                isLoading={isLoading}
-                hasError={hasError}
-                searchResults={searchResults}
-                hasNoResults={hasNoResults}
-                handleSelectSearchResult={handleSelectSearchResult}
-              />
-            }
-          />
-          <Route
-            path=":repoId"
-            element={<DetailPage selectedSearchResult={selectedSearchResult} />}
-          />
-        </Routes>
-      </ContentContainer>
+      </TitleContainer>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              searchTerm={searchTerm}
+              handleSearchTermChange={handleSearchTermChange}
+              handleSearchSubmit={handleSearchSubmit}
+              sortBy={sortBy}
+              handleSortByChange={handleSortByChange}
+              language={language}
+              handleLanguageChange={handleLanguageChange}
+              isLoading={isLoading}
+              hasError={hasError}
+              searchResults={searchResults}
+              hasNoResults={hasNoResults}
+              handleSelectSearchResult={handleSelectSearchResult}
+            />
+          }
+        />
+        <Route
+          path=":repoId"
+          element={<DetailPage selectedSearchResult={selectedSearchResult} />}
+        />
+      </Routes>
     </PageContainer>
   );
 };

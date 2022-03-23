@@ -5,8 +5,6 @@ import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 import SearchFilters from '../SearchFilters';
 
-const { tablet, desktop } = media;
-
 interface HomePageProps {
   searchTerm: string;
   handleSearchTermChange: (searchTerm: string) => void;
@@ -21,6 +19,15 @@ interface HomePageProps {
   hasNoResults: boolean;
   handleSelectSearchResult: (index: number) => void;
 }
+
+const ContentContainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const HomePage = ({
   searchTerm,
@@ -37,7 +44,7 @@ const HomePage = ({
   handleSelectSearchResult,
 }: HomePageProps) => {
   return (
-    <>
+    <ContentContainer>
       <SearchBar
         searchTerm={searchTerm}
         handleSearchSubmit={handleSearchSubmit}
@@ -62,7 +69,7 @@ const HomePage = ({
           />
         </>
       )}
-    </>
+    </ContentContainer>
   );
 };
 
