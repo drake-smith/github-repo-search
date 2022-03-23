@@ -56,18 +56,20 @@ const HomePage = ({
       )}
       {hasNoResults && <p>The search returned no results. Please try again.</p>}
       {searchResults.length > 0 && (
-        <>
-          <SearchFilters
-            language={language}
-            handleLanguageChange={handleLanguageChange}
-            sortBy={sortBy}
-            handleSortByChange={handleSortByChange}
-          />
-          <SearchResults
-            results={searchResults}
-            handleSelectSearchResult={handleSelectSearchResult}
-          />
-        </>
+        <SearchFilters
+          language={language}
+          handleLanguageChange={handleLanguageChange}
+          sortBy={sortBy}
+          handleSortByChange={handleSortByChange}
+        />
+      )}
+      {isLoading ? (
+        <p>Fetching results...</p>
+      ) : (
+        <SearchResults
+          results={searchResults}
+          handleSelectSearchResult={handleSelectSearchResult}
+        />
       )}
     </ContentContainer>
   );
