@@ -9,7 +9,7 @@ import DetailPage from '../DetailPage';
 const { tablet, desktop } = media;
 
 const PageContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding: 1.5rem;
 
@@ -61,6 +61,8 @@ const App = () => {
     language: string
   ) => {
     setIsLoading(true);
+    setHasError(false);
+    setHasNoResults(false);
     const encodedSearchTerm = encodeURIComponent(searchTerm);
     const sortByParam =
       sortBy !== SORT_BY.default ? `&sort=${encodeURIComponent(sortBy)}` : '';
@@ -116,7 +118,7 @@ const App = () => {
     <PageContainer>
       <TitleContainer>
         <Link to="/">
-          <Title>GitHub Repo Finder</Title>
+          <Title>Supreme Repo Finder</Title>
         </Link>
       </TitleContainer>
       <Routes>
