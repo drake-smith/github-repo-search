@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchResult from '../SearchResult';
-/*
- * For purpose of this project and time, allow any type here to define the API response object,
- * which contains more data than we need.
- */
+
 interface SearchResultsProps {
   // @ts-ignore
   results: Array<any>;
