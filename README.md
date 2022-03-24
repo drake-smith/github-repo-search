@@ -1,5 +1,7 @@
 # Supreme Repo Finder
-https://github-repo-finder1.netlify.app/
+
+https://supreme-repo-finder.netlify.app/
+
 A React application for searching for GitHub repositories.
 
 ## Setup and Install
