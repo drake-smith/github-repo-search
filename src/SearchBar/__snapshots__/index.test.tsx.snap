@@ -6,14 +6,15 @@ exports[`<SearchBar /> It renders correctly 1`] = `
   onSubmit={[Function]}
 >
   <input
-    className="sc-gsDKAQ kTAeqL"
+    aria-label="Search for GitHub repositories"
+    className="sc-gsDKAQ ibryMM"
     onChange={[Function]}
     placeholder="Search for GitHub repositories"
     type="search"
-    value="Test"
+    value=""
   />
   <input
-    className="sc-dkPtRN cNVLkp"
+    className="sc-dkPtRN kvzzzd"
     disabled={false}
     type="submit"
     value="Search"

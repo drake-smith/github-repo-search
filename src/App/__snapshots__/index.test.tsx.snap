@@ -1,35 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> renders correctly 1`] = `
+exports[`<App /> <App /> renders correctly 1`] = `
 <div
-  className="sc-furwcr bXgPNt"
+  className="sc-cxpSdN iqPA-df"
 >
   <div
-    className="sc-pVTFL ebYjgs"
+    className="sc-llYSUQ OtxLW"
   >
-    <h1
-      className="sc-jrQzAO jzcgGI"
+    <a
+      href="/"
+      onClick={[Function]}
     >
-      GitHub Repo Finder
-    </h1>
+      <h1
+        className="sc-iJKOTD cjRyIG"
+      >
+        Supreme Repo Finder
+      </h1>
+    </a>
+  </div>
+  <div
+    className="sc-bqiRlB dtxFRl"
+  >
     <form
       className="sc-bdvvtL jcpPon"
       onSubmit={[Function]}
     >
       <input
-        className="sc-gsDKAQ kTAeqL"
+        aria-label="Search for GitHub repositories"
+        className="sc-gsDKAQ ibryMM"
         onChange={[Function]}
         placeholder="Search for GitHub repositories"
         type="search"
         value=""
       />
       <input
-        className="sc-dkPtRN cNVLkp"
-        disabled={false}
+        className="sc-dkPtRN PqHbV"
+        disabled={true}
         type="submit"
         value="Search"
       />
     </form>
+    <ul
+      className="sc-furwcr RmOMa"
+    />
   </div>
 </div>
 `;

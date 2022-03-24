@@ -86,6 +86,7 @@ const SearchBar = ({
         value={searchTerm}
         onChange={(e) => handleSearchTermChange(e.target.value)}
         placeholder="Search for GitHub repositories"
+        aria-label="Search for GitHub repositories"
       />
       <SearchButton type="submit" value="Search" disabled={isDisabled} />
     </SearchBarForm>

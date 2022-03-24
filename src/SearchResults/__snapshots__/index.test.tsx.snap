@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchResults /> It renders correctly 1`] = `
+<ul
+  className="sc-jRQBWg fMshSK"
+>
+  <li
+    className="sc-bdvvtL bBGwRo"
+  >
+    <div>
+      <a
+        className="sc-gsDKAQ peeim"
+        href="/1"
+        onClick={[Function]}
+      >
+        <h2
+          className="sc-dkPtRN fCvFVC"
+        >
+          React
+        </h2>
+      </a>
+      <p
+        className="sc-hKwDye jzfCYy"
+      >
+        This is a library.
+      </p>
+    </div>
+    <div>
+      <div
+        className="sc-eCImPb iMXmGk"
+      >
+        <p>
+          by 
+          <strong>
+            facebook
+          </strong>
+        </p>
+        <p>
+          100
+           ⭐ 
+        </p>
+        <p>
+          JavaScript
+        </p>
+      </div>
+    </div>
+  </li>
+  <li
+    className="sc-bdvvtL bBGwRo"
+  >
+    <div>
+      <a
+        className="sc-gsDKAQ peeim"
+        href="/2"
+        onClick={[Function]}
+      >
+        <h2
+          className="sc-dkPtRN fCvFVC"
+        >
+          Angular
+        </h2>
+      </a>
+      <p
+        className="sc-hKwDye jzfCYy"
+      >
+        This is a library.
+      </p>
+    </div>
+    <div>
+      <div
+        className="sc-eCImPb iMXmGk"
+      >
+        <p>
+          by 
+          <strong>
+            google
+          </strong>
+        </p>
+        <p>
+          100
+           ⭐ 
+        </p>
+        <p>
+          JavaScript
+        </p>
+      </div>
+    </div>
+  </li>
+</ul>
+`;

@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import { media } from '../shared/media';
 
 const { tablet } = media;
-/*
- * For purpose of this project and time, allow any type here to define the API response object,
- * which contains more data than we need.
- */
+
 interface SearchResultProps {
   index: number;
   handleSelectSearchResult: (index: number) => void;
@@ -24,8 +21,6 @@ const SearchResultContainer = styled.li`
   border-radius: 10px;
   background: #f7f7f9;
   margin-top: 1rem;
-  /* display: flex; */
-  /* justify-content: space-between; */
   display: block;
   grid-template-columns: 66.66% 1fr;
   column-gap: 1rem;

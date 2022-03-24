@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> It renders correctly 1`] = `
+<div
+  className="sc-bqiRlB dtxFRl"
+>
+  <form
+    className="sc-bdvvtL jcpPon"
+    onSubmit={[Function]}
+  >
+    <input
+      aria-label="Search for GitHub repositories"
+      className="sc-gsDKAQ ibryMM"
+      onChange={[Function]}
+      placeholder="Search for GitHub repositories"
+      type="search"
+      value=""
+    />
+    <input
+      className="sc-dkPtRN PqHbV"
+      disabled={true}
+      type="submit"
+      value="Search"
+    />
+  </form>
+  <ul
+    className="sc-furwcr RmOMa"
+  />
+</div>
+`;

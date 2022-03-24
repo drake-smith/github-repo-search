@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchFilters /> It renders correctly 1`] = `
+<div
+  className="sc-bdvvtL NqmGr"
+>
+  <p
+    className="sc-gsDKAQ RTiBz"
+  >
+    Sort by:
+  </p>
+  <div
+    className="sc-dkPtRN dddJjX"
+  >
+    <div>
+      <div>
+        <input
+          checked={true}
+          data-testid="default"
+          id="default"
+          name="Best match"
+          onChange={[Function]}
+          type="radio"
+          value="best match"
+        />
+        <label
+          className="sc-hKwDye ggeeAH"
+          htmlFor="default"
+        >
+          Best match
+        </label>
+      </div>
+      <div>
+        <input
+          checked={false}
+          data-testid="stars"
+          id="stars"
+          name="Total Stars"
+          onChange={[Function]}
+          type="radio"
+          value="stars"
+        />
+        <label
+          className="sc-hKwDye ggeeAH"
+          htmlFor="stars"
+        >
+          Total stars
+        </label>
+      </div>
+    </div>
+    <div
+      className="sc-eCImPb ellptx"
+    >
+      <label
+        htmlFor="language-select"
+      >
+        Language
+      </label>
+      <select
+        className="sc-jRQBWg iUJxXW"
+        data-testid="language-select"
+        id="language-select"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          data-testid="language-option"
+          value=""
+        >
+          None
+        </option>
+        <option
+          data-testid="language-option"
+          value="javascript"
+        >
+          JavaScript
+        </option>
+        <option
+          data-testid="language-option"
+          value="typescript"
+        >
+          TypeScript
+        </option>
+        <option
+          data-testid="language-option"
+          value="python"
+        >
+          Python
+        </option>
+        <option
+          data-testid="language-option"
+          value="ruby"
+        >
+          Ruby
+        </option>
+        <option
+          data-testid="language-option"
+          value="java"
+        >
+          Java
+        </option>
+        <option
+          data-testid="language-option"
+          value="php"
+        >
+          PHP
+        </option>
+        <option
+          data-testid="language-option"
+          value="c#"
+        >
+          C#
+        </option>
+        <option
+          data-testid="language-option"
+          value="c++"
+        >
+          C++
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;

@@ -46,13 +46,13 @@ const SearchFilters = ({
 }: SearchFiltersProps) => {
   const languageSelects: Array<JSX.Element> = [];
   languageSelects.push(
-    <option key={'none'} value={''}>
+    <option key={'none'} value={''} data-testid={'language-option'}>
       None
     </option>
   );
   for (const key in LANGUAGES) {
     languageSelects.push(
-      <option key={key} value={key}>
+      <option key={key} value={key} data-testid={'language-option'}>
         {LANGUAGES[key]}
       </option>
     );
@@ -66,6 +66,7 @@ const SearchFilters = ({
             <input
               type="radio"
               id="default"
+              data-testid="default"
               name="Best match"
               value="best match"
               checked={sortBy === SORT_BY.default}
@@ -77,6 +78,7 @@ const SearchFilters = ({
             <input
               type="radio"
               id="stars"
+              data-testid="stars"
               name="Total Stars"
               value="stars"
               checked={sortBy === SORT_BY.stars}
@@ -88,6 +90,7 @@ const SearchFilters = ({
         <LanguageContainer>
           <label htmlFor="language-select">Language</label>
           <LanguageSelect
+            data-testid="language-select"
             value={language}
             id="language-select"
             onChange={(e) => handleLanguageChange(e.target.value)}
