@@ -17,6 +17,7 @@ exports[`<SearchFilters /> It renders correctly 1`] = `
         <input
           checked={true}
           data-testid="default"
+          disabled={false}
           id="default"
           name="Best match"
           onChange={[Function]}
@@ -34,6 +35,7 @@ exports[`<SearchFilters /> It renders correctly 1`] = `
         <input
           checked={false}
           data-testid="stars"
+          disabled={false}
           id="stars"
           name="Total Stars"
           onChange={[Function]}
@@ -59,6 +61,7 @@ exports[`<SearchFilters /> It renders correctly 1`] = `
       <select
         className="sc-jRQBWg iUJxXW"
         data-testid="language-select"
+        disabled={false}
         id="language-select"
         onChange={[Function]}
         value=""

@@ -60,7 +60,7 @@ const HomePage = ({
         searchTerm={searchTerm}
         handleSearchSubmit={handleSearchSubmit}
         handleSearchTermChange={handleSearchTermChange}
-        isDisabled={isLoading || searchTerm === ''}
+        isDisabled={isLoading || searchTerm.trim() === ''}
       />
       {hasError && (
         <Text>
@@ -76,6 +76,7 @@ const HomePage = ({
           handleLanguageChange={handleLanguageChange}
           sortBy={sortBy}
           handleSortByChange={handleSortByChange}
+          isDisabled={isLoading || searchTerm.trim() === ''}
         />
       )}
       {isLoading ? (

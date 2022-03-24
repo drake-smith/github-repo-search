@@ -7,6 +7,7 @@ interface SearchFiltersProps {
   handleSortByChange: (sortBy: string) => void;
   language: string;
   handleLanguageChange: (language: string) => void;
+  isDisabled: boolean;
 }
 
 const SearchFiltersContainer = styled.div`
@@ -43,6 +44,7 @@ const SearchFilters = ({
   handleSortByChange,
   language,
   handleLanguageChange,
+  isDisabled,
 }: SearchFiltersProps) => {
   const languageSelects: Array<JSX.Element> = [];
   languageSelects.push(
@@ -71,6 +73,7 @@ const SearchFilters = ({
               value="best match"
               checked={sortBy === SORT_BY.default}
               onChange={() => handleSortByChange(SORT_BY.default)}
+              disabled={isDisabled}
             />
             <RadioLabel htmlFor="default">Best match</RadioLabel>
           </div>
@@ -83,6 +86,7 @@ const SearchFilters = ({
               value="stars"
               checked={sortBy === SORT_BY.stars}
               onChange={() => handleSortByChange(SORT_BY.stars)}
+              disabled={isDisabled}
             />
             <RadioLabel htmlFor="stars">Total stars</RadioLabel>
           </div>
@@ -94,6 +98,7 @@ const SearchFilters = ({
             value={language}
             id="language-select"
             onChange={(e) => handleLanguageChange(e.target.value)}
+            disabled={isDisabled}
           >
             {languageSelects}
           </LanguageSelect>

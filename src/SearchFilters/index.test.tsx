@@ -17,6 +17,7 @@ describe('<SearchFilters />', () => {
             handleLanguageChange={handleLanguageChange}
             sortBy={''}
             handleSortByChange={handleSortByChange}
+            isDisabled={false}
           />
         </MemoryRouter>
       )
@@ -32,6 +33,7 @@ describe('<SearchFilters />', () => {
           handleLanguageChange={handleLanguageChange}
           sortBy={''}
           handleSortByChange={handleSortByChange}
+          isDisabled={false}
         />
       </MemoryRouter>
     );
