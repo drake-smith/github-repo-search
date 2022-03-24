@@ -60,34 +60,52 @@ const App = () => {
     sortBy: string,
     language: string
   ) => {
+    // Reset values
     setIsLoading(true);
     setHasError(false);
     setHasNoResults(false);
+
+    // Encode our params
     const encodedSearchTerm = encodeURIComponent(searchTerm);
     const sortByParam =
       sortBy !== SORT_BY.default ? `&sort=${encodeURIComponent(sortBy)}` : '';
     const encodedLanguageParam =
       language !== '' ? `+language:${encodeURIComponent(language)}` : '';
 
-    const response = await fetch(
-      `${GITHUB_API_URL}?q=${encodedSearchTerm}${encodedLanguageParam}${sortByParam}`
-    );
-    if (!response.ok) {
-      console.error(
-        `Error fetching search results. Error code: ${response.status} ${response.statusText}`
+    // Fetch the results asynchronously
+    try {
+      const response = await fetch(
+        `${GITHUB_API_URL}?q=${encodedSearchTerm}${encodedLanguageParam}${sortByParam}`
       );
+      /*
+       * Fetch only detects network errors. Wrap in try/catch block so we can
+       * check for both network errors in the catch block, and HTTP errors in the
+       * try block (like a 403, 500) etc.
+       */
+      if (!response.ok) {
+        console.error(
+          `Error fetching search results. Error code: ${response.status} ${response.statusText}`
+        );
+        setHasError(true);
+        searchResults.length > 0 && setSearchResults([]);
+      } else {
+        const json = await response.json();
+
+        if (json.items.length > 0) {
+          // Success, store the JSON and update state
+          hasError && setHasError(false);
+          hasNoResults && setHasNoResults(false);
+          setSearchResults(json.items);
+        } else {
+          // Search came back with zero results
+          setHasNoResults(true);
+          setSearchResults([]);
+        }
+      }
+    } catch (error) {
+      console.error(error);
       setHasError(true);
       searchResults.length > 0 && setSearchResults([]);
-    } else {
-      const json = await response.json();
-      if (json.items.length > 0) {
-        hasError && setHasError(false);
-        hasNoResults && setHasNoResults(false);
-        setSearchResults(json.items);
-      } else {
-        setHasNoResults(true);
-        setSearchResults([]);
-      }
     }
     setIsLoading(false);
   };
