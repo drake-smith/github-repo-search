@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchResult /> It renders correctly 1`] = `
+<li
+  className="sc-bdvvtL bBGwRo"
+>
+  <div>
+    <a
+      className="sc-gsDKAQ peeim"
+      href="/24736"
+      onClick={[Function]}
+    >
+      <h2
+        className="sc-dkPtRN fCvFVC"
+      >
+        Repository
+      </h2>
+    </a>
+    <p
+      className="sc-hKwDye jzfCYy"
+    >
+      This is a description
+    </p>
+  </div>
+  <div>
+    <div
+      className="sc-eCImPb iMXmGk"
+    >
+      <p>
+        by 
+        <strong>
+          John Smith
+        </strong>
+      </p>
+      <p>
+        500
+         ⭐ 
+      </p>
+      <p>
+        JavaScript
+      </p>
+    </div>
+  </div>
+</li>
+`;
