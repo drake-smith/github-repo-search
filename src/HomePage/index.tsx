@@ -20,6 +20,7 @@ interface HomePageProps {
   searchResults: any[];
   hasNoResults: boolean;
   handleSelectSearchResult: (index: number) => void;
+  languages: any[];
 }
 
 const ContentContainer = styled.div`
@@ -53,6 +54,7 @@ const HomePage = ({
   searchResults,
   hasNoResults,
   handleSelectSearchResult,
+  languages
 }: HomePageProps) => {
   return (
     <ContentContainer>
@@ -73,6 +75,7 @@ const HomePage = ({
       {searchResults.length > 0 && (
         <SearchFilters
           language={language}
+          languages={languages}
           handleLanguageChange={handleLanguageChange}
           sortBy={sortBy}
           handleSortByChange={handleSortByChange}

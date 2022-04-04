@@ -8,6 +8,7 @@ interface SearchFiltersProps {
   language: string;
   handleLanguageChange: (language: string) => void;
   isDisabled: boolean;
+  languages: any[]
 }
 
 const SearchFiltersContainer = styled.div`
@@ -45,6 +46,7 @@ const SearchFilters = ({
   language,
   handleLanguageChange,
   isDisabled,
+  languages
 }: SearchFiltersProps) => {
   const languageSelects: Array<JSX.Element> = [];
   languageSelects.push(
@@ -52,13 +54,14 @@ const SearchFilters = ({
       None
     </option>
   );
-  for (const key in LANGUAGES) {
+  languages.forEach((language: any, i) => {
     languageSelects.push(
-      <option key={key} value={key} data-testid={'language-option'}>
-        {LANGUAGES[key]}
+      <option key={i} value={language} data-testid={'language-option'}>
+        {language}
       </option>
     );
-  }
+  })
+
   return (
     <SearchFiltersContainer>
       <SortByLabel>Sort by:</SortByLabel>

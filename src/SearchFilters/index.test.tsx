@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -12,6 +13,7 @@ describe('<SearchFilters />', () => {
     const tree = renderer
       .create(
         <MemoryRouter>
+          {/* @ts-ignore */}
           <SearchFilters
             language={''}
             handleLanguageChange={handleLanguageChange}
@@ -28,6 +30,7 @@ describe('<SearchFilters />', () => {
   test('handler functions are called correctly', () => {
     render(
       <MemoryRouter>
+        {/* @ts-ignore */}
         <SearchFilters
           language={''}
           handleLanguageChange={handleLanguageChange}

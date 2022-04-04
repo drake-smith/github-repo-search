@@ -51,6 +51,7 @@ const App = () => {
   const [hasNoResults, setHasNoResults] = useState(false);
   const [sortBy, setSortBy] = useState(SORT_BY.default);
   const [language, setLanguage] = useState('');
+  const [languages, setLanguages] = useState([])
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedSearchResult, setSelectedSearchResult] = useState(null);
@@ -95,7 +96,24 @@ const App = () => {
           // Success, store the JSON and update state
           hasError && setHasError(false);
           hasNoResults && setHasNoResults(false);
+          
+          const languages = [];
+
+          for (let i = 0; i < json.items.length; i++) {
+            if (languages.indexOf(json.items[i].language) === -1 && json.items[i].language !== null){
+                languages.push(json.items[i].language)
+            } 
+          }
+   
+          console.log(languages)
+
+          // @ts-ignore
+          setLanguages(languages)
           setSearchResults(json.items);
+
+          // handle logic to create languages array
+
+
         } else {
           // Search came back with zero results
           setHasNoResults(true);
@@ -125,13 +143,25 @@ const App = () => {
 
   const handleLanguageChange = (language: string) => {
     setLanguage(language);
-    fetchSearchResults(searchTerm, sortBy, language);
+    // fetchSearchResults(searchTerm, sortBy, language);
+
+    // filter searchResults by language
+    // setSearchResults(newSearchResultsArr)
+
+    // const filteredSearchResults = []
+
+    // const filteredSearchResults = searchResults.filter((result: any, i) => result.language === language)
+    // console.log('searchResults', filteredSearchResults)
+    // setSearchResults(filteredSearchResults)
+
   };
 
   const handleSelectSearchResult = (index: number) => {
     setSelectedSearchResult(searchResults[index]);
   };
 
+  const results = language === '' ? searchResults : searchResults.filter((result: any, i) => result.language === language)
+  
   return (
     <PageContainer>
       <TitleContainer>
@@ -153,9 +183,10 @@ const App = () => {
               handleLanguageChange={handleLanguageChange}
               isLoading={isLoading}
               hasError={hasError}
-              searchResults={searchResults}
+              searchResults={results}
               hasNoResults={hasNoResults}
               handleSelectSearchResult={handleSelectSearchResult}
+              languages={languages}
             />
           }
         />

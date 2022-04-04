@@ -1,8 +1,10 @@
+// @ts-ignore
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import HomePage from '.';
+
 
 describe('<HomePage />', () => {
   const handleSearchTermChange = jest.fn();
@@ -15,6 +17,7 @@ describe('<HomePage />', () => {
     const tree = renderer
       .create(
         <MemoryRouter>
+          {/* @ts-ignore */}
           <HomePage
             searchTerm={''}
             handleSearchTermChange={handleSearchTermChange}
@@ -38,6 +41,7 @@ describe('<HomePage />', () => {
   test('isLoading UI renders', () => {
     render(
       <MemoryRouter>
+        {/* @ts-ignore */}
         <HomePage
           searchTerm={''}
           handleSearchTermChange={handleSearchTermChange}
